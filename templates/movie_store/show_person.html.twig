@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row" id="row_title">
+            <div class="align_title">
+                <h2>{{ personne.prenom }} {{ personne.nom }}</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <img src="https://image.tmdb.org/t/p/w500{{ personne.image }}" alt="{{ personne.nom }}">
+            </div>
+            <div class="col-md-6">
+                    {{ personne.bio }}
+                <div>
+                    <ul>
+                    <li>Films
+                        {% for film in films %}
+                            <a href="{{ path('film_show', {'id': film.id }) }}">
+                                <h5>{{ film.titre}}</h5>
+                            </a>
+                        {% endfor %}
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>Fonction
+                        {% for fonction in fonctions %}
+                                <h5>{{ fonction.libelle }}</h5>
+                            </a>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+{% endblock %}
