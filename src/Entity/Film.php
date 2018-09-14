@@ -34,7 +34,9 @@ class Film
     private $description;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Personne", mappedBy="films")
+     * utilisation de "cascade:persist" pour la soumission du formulaire imbriqué dans "create.html.twig"
+     * 
+     * @ORM\ManyToMany(targetEntity="App\Entity\Personne", mappedBy="films", cascade={"persist"})
      */
     private $personnes;
 
@@ -127,5 +129,13 @@ class Film
         $this->image = $image;
 
         return $this;
+    }
+     /**
+     * Generates the magic method
+     * 
+     */
+    public function __toString(){
+   
+        return $this->titre;
     }
 }

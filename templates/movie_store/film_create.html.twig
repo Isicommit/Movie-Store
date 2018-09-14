@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme formFilm 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+<h5>Enregistrement d'un Film</h5>
+{{ form_start(formFilm) }}
+
+{{ form_row(formFilm.titre, {'attr': {'placeholder': "Titre du film"}}) }}
+{{ form_row(formFilm.description, {'attr': {'placeholder': "Description du film"}}) }}
+{{ form_row(formFilm.image, {'attr': {'placeholder': "URL de l'image TMDB"}}) }}
+{{ form_row(formFilm.dateReal, {'attr': {'placeholder': "date de réalisation"}}) }}
+
+<div class="col-xs-4">
+<h5>Personnes</h5>
+{# ul qui accueillera le formulaire imbriqué correspondant à la collection "personnes" dans le Form "FilmType" #}
+{# la valeur de l'attribut data-prototype sera récupérée et traitée par le script app.js #}
+<ul type="circle" class="personnes" data-prototype="{{ form_widget(formFilm.personnes.vars.prototype)|e('html_attr') }}" >
+</ul>
+</div>
+<button type="submit" class="btn btn-success">
+{% if editMode %}
+Enregistrer les modifications
+{% else %}
+Ajouter le film
+{% endif %}
+</button>
+
+{{ form_end(formFilm, {'render_rest': false}) }}
+{% endblock %}

@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>
-        {% block title %} Bienvenue ! {% endblock %}
+        {% block title %} MovieStore {% endblock %}
         </title>
         <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
         <link rel="stylesheet" href="{{ asset('build/app.css') }}">
@@ -22,16 +22,20 @@
                             <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Acteurs</a>
+                        <a class="nav-link" href="{{ path('person_list') }}">Acteurs</a>
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                    <input class="form-control mr-sm-2" type="text" placeholder="film ou personne">
                     <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
                 </form>
             </div>
         </nav>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
+        {# appel au CDN jquery pour contourner le bug avec webpack encore (https://github.com/symfony/webpack-encore/issues/32) #}
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="{{ asset('build/app.js') }}"></script>
+                
     </body>
 </html>

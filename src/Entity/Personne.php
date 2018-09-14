@@ -158,4 +158,12 @@ class Personne
 
         return $this;
     }
+    /**
+     * Generates the magic method
+     * 
+     */
+    public function __toString(){
+
+        return $this->$nom;
+    }
 }

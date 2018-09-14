@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme formPerson 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+<h5>Enregistrement d'une Personne</h5>
+{{ form_start(formPerson) }}
+
+{{ form_row(formPerson.nom, {'attr': {'placeholder': "nom"}}) }}
+{{ form_row(formPerson.prenom, {'attr': {'placeholder': "prenom"}}) }}
+{{ form_row(formPerson.bio, {'attr': {'placeholder': "biographie"}}) }}
+{{ form_row(formPerson.image, {'attr': {'placeholder': "URL de l'image TMDB"}}) }}
+
+<div class="col-xs-4">
+<h5>Films</h5>
+{{ form_widget(formPerson.nom) }}
+{{ form_widget(formPerson.prenom) }}
+{{ form_widget(formPerson.image) }}
+{{ form_widget(formPerson.bio) }}
+{{ form_widget(formPerson.fonctions) }}
+{{ form_widget(formPerson.films) }}
+</div>
+<button type="submit" class="btn btn-success">
+{% if editMode %}
+Enregistrer les modifications
+{% else %}
+Ajouter la personne
+{% endif %}
+</button>
+
+{{ form_end(formPerson, {'render_rest': false}) }}
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+<section class="films">
+ {% for personne in personnes %}
+ <div class="row">
+ <div class="col-md-6">
+ <article>
+      <h2>{{ personne.nom }}</h2>
+    <div class="content"><img src="https://image.tmdb.org/t/p/w200{{ personne.image }}" alt=""></div>
+         </article>
+     </div>
+    <div class="col-md-6 align_link">
+    <a href="{{ path('film_show', { 'id' : personne.id} ) }}" class="btn btn-primary">Voir les détails</a>    
+    </div>
+    </div>
+ {% endfor %}
+</section> 
+{% endblock %}
